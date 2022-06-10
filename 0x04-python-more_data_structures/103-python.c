@@ -3,7 +3,6 @@
 
 /**
  * print_python_bytes - Prints bytes information
- *
  * @p: Python Object
  * Return: no return
  */
@@ -13,7 +12,7 @@ void print_python_bytes(PyObject *p)
 	long int size, i, limit;
 
 	printf("[.] bytes object info\n");
-if (!PyBytes_Check(p))
+	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
@@ -43,7 +42,6 @@ if (!PyBytes_Check(p))
 
 /**
  * print_python_list - Prints list information
- *
  * @p: Python Object
  * Return: no return
  */
