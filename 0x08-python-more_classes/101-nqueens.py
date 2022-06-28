@@ -53,7 +53,7 @@ if __name__ == "__main__":
             clear_a(x)
             if reject(x, y):
                 a[x][1] = y
-                if (x == n - 1):  # accepts the solution
+                if (x == n - 1):  # accept the solution
                     print(a)
                 else:
                     nqueens(x + 1)  # moves on to next x value to continue
