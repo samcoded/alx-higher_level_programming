@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This documents gather stats from stdin"""
+"""This document gather stats from stdin"""
 import sys
 
 
