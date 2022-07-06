@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This document gather stats from stdin"""
+"""This documents gather stats from stdin"""
 import sys
 
 
@@ -9,6 +9,7 @@ def print_pretty(size, code_dict):
     for key, value in sorted(code_dict.items()):
         if (value != 0):
             print("{}: {}".format(key, value))
+
 
 if __name__ == '__main__':
     """init code to print the parsed data"""
