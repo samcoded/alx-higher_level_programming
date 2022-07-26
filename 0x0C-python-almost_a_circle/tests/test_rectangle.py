@@ -193,160 +193,160 @@ class Test_Update(unittest.TestCase):
         self.assertEqual(r1.height, 300)
         self.assertEqual(r1.x, 400)
 
-def test_5_args(self):
-        """pass 5 args to update function"""
+    def test_5_args(self):
+            """pass 5 args to update function"""
+            self.set_nb_to_zero()
+            r1 = Rectangle(2, 1, 10, 0)
+            r1.update(100, 200, 300, 400, 500)
+            self.assertEqual(r1.id, 100)
+            self.assertEqual(r1.width, 200)
+            self.assertEqual(r1.height, 300)
+            self.assertEqual(r1.x, 400)
+            self.assertEqual(r1.y, 500)
+
+    def test_more_than_5_args(self):
+        """pass more of 5 args to update function"""
         self.set_nb_to_zero()
         r1 = Rectangle(2, 1, 10, 0)
-        r1.update(100, 200, 300, 400, 500)
+        r1.update(100, 200, 300, 400, 500, 600, 700, 800)
         self.assertEqual(r1.id, 100)
         self.assertEqual(r1.width, 200)
         self.assertEqual(r1.height, 300)
         self.assertEqual(r1.x, 400)
         self.assertEqual(r1.y, 500)
 
-def test_more_than_5_args(self):
-    """pass more of 5 args to update function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(100, 200, 300, 400, 500, 600, 700, 800)
-    self.assertEqual(r1.id, 100)
-    self.assertEqual(r1.width, 200)
-    self.assertEqual(r1.height, 300)
-    self.assertEqual(r1.x, 400)
-    self.assertEqual(r1.y, 500)
+    def test_id_kwargs(self):
+        """pass id kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(id=123)
+        self.assertEqual(r1.id, 123)
 
-def test_id_kwargs(self):
-    """pass id kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(id=123)
-    self.assertEqual(r1.id, 123)
+    def test_width_kwargs(self):
+        """pass id width kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(id=123, width=987)
+        self.assertEqual(r1.id, 123)
+        self.assertEqual(r1.width, 987)
 
-def test_width_kwargs(self):
-    """pass id width kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(id=123, width=987)
-    self.assertEqual(r1.id, 123)
-    self.assertEqual(r1.width, 987)
+    def test_height_kwargs(self):
+        """pass if widt height kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(id=123, width=987, height=432)
+        self.assertEqual(r1.id, 123)
+        self.assertEqual(r1.width, 987)
+        self.assertEqual(r1.height, 432)
 
-def test_height_kwargs(self):
-    """pass if widt height kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(id=123, width=987, height=432)
-    self.assertEqual(r1.id, 123)
-    self.assertEqual(r1.width, 987)
-    self.assertEqual(r1.height, 432)
+    def test_x_kwargs(self):
+        """pass if widt height x kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(id=123, width=987, height=432, x=940)
+        self.assertEqual(r1.id, 123)
+        self.assertEqual(r1.width, 987)
+        self.assertEqual(r1.height, 432)
+        self.assertEqual(r1.x, 940)
 
-def test_x_kwargs(self):
-    """pass if widt height x kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(id=123, width=987, height=432, x=940)
-    self.assertEqual(r1.id, 123)
-    self.assertEqual(r1.width, 987)
-    self.assertEqual(r1.height, 432)
-    self.assertEqual(r1.x, 940)
+    def test_y_kwargs(self):
+        """pass if widt height x y kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(id=123, width=987, height=432, x=940, y=758)
+        self.assertEqual(r1.id, 123)
+        self.assertEqual(r1.width, 987)
+        self.assertEqual(r1.height, 432)
+        self.assertEqual(r1.x, 940)
+        self.assertEqual(r1.y, 758)
 
-def test_y_kwargs(self):
-    """pass if widt height x y kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(id=123, width=987, height=432, x=940, y=758)
-    self.assertEqual(r1.id, 123)
-    self.assertEqual(r1.width, 987)
-    self.assertEqual(r1.height, 432)
-    self.assertEqual(r1.x, 940)
-    self.assertEqual(r1.y, 758)
+    def test_more_kwargs(self):
+        """pass valid and not valid kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(id=123, width=987, height=432, x=940, y=758, other='random')
+        self.assertEqual(r1.id, 123)
+        self.assertEqual(r1.width, 987)
+        self.assertEqual(r1.height, 432)
+        self.assertEqual(r1.x, 940)
+        self.assertEqual(r1.y, 758)
+        string = "'Rectangle' object has no attribute 'other'"
+        with self.assertRaisesRegex(AttributeError, string):
+            self.assertEqual(r1.other, 'random')
 
-def test_more_kwargs(self):
-    """pass valid and not valid kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(id=123, width=987, height=432, x=940, y=758, other='random')
-    self.assertEqual(r1.id, 123)
-    self.assertEqual(r1.width, 987)
-    self.assertEqual(r1.height, 432)
-    self.assertEqual(r1.x, 940)
-    self.assertEqual(r1.y, 758)
-    string = "'Rectangle' object has no attribute 'other'"
-    with self.assertRaisesRegex(AttributeError, string):
-        self.assertEqual(r1.other, 'random')
+    def test_args_and_kwargs(self):
+        """pass args and kwargs to function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        r1.update(129, 234, id=123, width=987, height=432, x=940, y=758,
+                    other='random')
+        self.assertEqual(r1.id, 129)
+        self.assertEqual(r1.width, 234)
+        self.assertEqual(r1.height, 1)
+        self.assertEqual(r1.x, 10)
+        self.assertEqual(r1.y, 0)
+        string3 = "'Rectangle' object has no attribute 'other'"
+        with self.assertRaisesRegex(AttributeError, string3):
+            self.assertEqual(r1.other, 'random')
 
-def test_args_and_kwargs(self):
-    """pass args and kwargs to function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    r1.update(129, 234, id=123, width=987, height=432, x=940, y=758,
-                other='random')
-    self.assertEqual(r1.id, 129)
-    self.assertEqual(r1.width, 234)
-    self.assertEqual(r1.height, 1)
-    self.assertEqual(r1.x, 10)
-    self.assertEqual(r1.y, 0)
-    string3 = "'Rectangle' object has no attribute 'other'"
-    with self.assertRaisesRegex(AttributeError, string3):
-        self.assertEqual(r1.other, 'random')
+    def test_1_args_invalid(self):
+        """pass 1 invalid arg to update function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
 
-def test_1_args_invalid(self):
-    """pass 1 invalid arg to update function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
+        # pass negative int
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            r1.update(100, -23)
 
-    # pass negative int
-    with self.assertRaisesRegex(ValueError, 'width must be > 0'):
-        r1.update(100, -23)
+        # pass str
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1.update(321, 'randval')
 
-    # pass str
-    with self.assertRaisesRegex(TypeError, 'width must be an integer'):
-        r1.update(321, 'randval')
+        # pass float to update height
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r1.update(28, 3, 23.43, 342)
 
-    # pass float to update height
-    with self.assertRaisesRegex(TypeError, 'height must be an integer'):
-        r1.update(28, 3, 23.43, 342)
+    def test_args_as_iterable_obj(self):
+        """pass iterable args to update function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
 
-def test_args_as_iterable_obj(self):
-    """pass iterable args to update function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
+        # pass list to update
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            ls = [1, 2, 3]
+            r1.update(2, ls)
 
-    # pass list to update
-    with self.assertRaisesRegex(TypeError, 'width must be an integer'):
-        ls = [1, 2, 3]
-        r1.update(2, ls)
+        # pass tuple to update
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            ls = (1, 2, 3)
+            r1.update(2, ls)
 
-    # pass tuple to update
-    with self.assertRaisesRegex(TypeError, 'width must be an integer'):
-        ls = (1, 2, 3)
-        r1.update(2, ls)
+        # pass set to update
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            ls = {1, 2, 3}
+            r1.update(2, ls)
 
-    # pass set to update
-    with self.assertRaisesRegex(TypeError, 'width must be an integer'):
-        ls = {1, 2, 3}
-        r1.update(2, ls)
+        # pass dict to update
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            ls = {'width': 1, 'x': 2, 'y': 3}
+            r1.update(2, ls)
 
-    # pass dict to update
-    with self.assertRaisesRegex(TypeError, 'width must be an integer'):
-        ls = {'width': 1, 'x': 2, 'y': 3}
-        r1.update(2, ls)
+    def test_args_invalid(self):
+        """pass 2 args to update function"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0)
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            r1.update(100, 200, -43)
+        with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
+            r1.update(100, 200, 903, 23, -43)
 
-def test_args_invalid(self):
-    """pass 2 args to update function"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0)
-    with self.assertRaisesRegex(ValueError, 'height must be > 0'):
-        r1.update(100, 200, -43)
-    with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
-        r1.update(100, 200, 903, 23, -43)
-
-    # invalid last arg passes because is not taken into account
-    r1.update(100, 200, 903, 23, 345, 49, -43)
-    self.assertEqual(r1.id, 100)
-    self.assertEqual(r1.width, 200)
-    self.assertEqual(r1.height, 903)
-    self.assertEqual(r1.x, 23)
-    self.assertEqual(r1.y, 345)
+        # invalid last arg passes because is not taken into account
+        r1.update(100, 200, 903, 23, 345, 49, -43)
+        self.assertEqual(r1.id, 100)
+        self.assertEqual(r1.width, 200)
+        self.assertEqual(r1.height, 903)
+        self.assertEqual(r1.x, 23)
+        self.assertEqual(r1.y, 345)
 
 
 class Test_Dictionary_Representation(unittest.TestCase):
@@ -355,37 +355,37 @@ class Test_Dictionary_Representation(unittest.TestCase):
         """set to 0 the number of objects"""
         Base._Base__nb_objects = 0
 
-def test_pass_1_arg(self):
-    """pass one argument to function call"""
-    self.set_nb_to_zero()
-    r1 = Rectangle(2, 1, 10, 0, 1)
-    self.assertEqual(r1.id, 1)
-    string10 = "takes 1 positional argument but 2 were given"
-    with self.assertRaisesRegex(TypeError, string10):
-        r1.to_dictionary(239)
+    def test_pass_1_arg(self):
+        """pass one argument to function call"""
+        self.set_nb_to_zero()
+        r1 = Rectangle(2, 1, 10, 0, 1)
+        self.assertEqual(r1.id, 1)
+        string10 = "takes 1 positional argument but 2 were given"
+        with self.assertRaisesRegex(TypeError, string10):
+            r1.to_dictionary(239)
 
-def test_ret_dict(self):
-    """Test to dictionary function"""
-    r1 = Rectangle(23, 43, 129, 32, 2)
-    self.assertEqual(2, r1.id)
-    d_comp = {'id': 2, 'width': 23, 'height': 43, 'x': 129, 'y': 32}
-    self.assertDictEqual(r1.to_dictionary(), d_comp)
+    def test_ret_dict(self):
+        """Test to dictionary function"""
+        r1 = Rectangle(23, 43, 129, 32, 2)
+        self.assertEqual(2, r1.id)
+        d_comp = {'id': 2, 'width': 23, 'height': 43, 'x': 129, 'y': 32}
+        self.assertDictEqual(r1.to_dictionary(), d_comp)
 
-def test_dict_with_args(self):
-    """Test to dictionary function"""
-    r1 = Rectangle(10, 2, 1, 9, 9)
-    r1_dict = r1.to_dictionary()
-    d = {'x': 1, 'y': 9, 'id': 9, 'height': 2, 'width': 10}
-    self.assertDictEqual(r1_dict, d)
+    def test_dict_with_args(self):
+        """Test to dictionary function"""
+        r1 = Rectangle(10, 2, 1, 9, 9)
+        r1_dict = r1.to_dictionary()
+        d = {'x': 1, 'y': 9, 'id': 9, 'height': 2, 'width': 10}
+        self.assertDictEqual(r1_dict, d)
 
-    self.assertEqual(type(r1_dict), dict)
+        self.assertEqual(type(r1_dict), dict)
 
-    r2 = Rectangle(10, 2, 1, 9, 10)
-    r2_dict = r2.to_dictionary()
-    d = {'x': 1, 'y': 9, 'id': 10, 'height': 2, 'width': 10}
-    self.assertDictEqual(r2_dict, d)
+        r2 = Rectangle(10, 2, 1, 9, 10)
+        r2_dict = r2.to_dictionary()
+        d = {'x': 1, 'y': 9, 'id': 10, 'height': 2, 'width': 10}
+        self.assertDictEqual(r2_dict, d)
 
-    self.assertEqual(r1 == r2, False)
+        self.assertEqual(r1 == r2, False)
 
 
 class TestRectangle(unittest.TestCase):
@@ -400,28 +400,28 @@ class TestRectangle(unittest.TestCase):
         cls.r3 = Rectangle(5, 6, 7, 8, 9)
         cls.r4 = Rectangle(11, 12, 13, 14)
 
-def test_width_valueerror(self):
-    """Test ints <= 0 for width"""
-    with self.assertRaisesRegex(ValueError, "width must be > 0"):
-        r = Rectangle(-1, 1)
+    def test_width_valueerror(self):
+        """Test ints <= 0 for width"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(-1, 1)
 
-    with self.assertRaisesRegex(ValueError, "width must be > 0"):
-        r = Rectangle(0, 1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(0, 1)
 
-def test_height_valueerror(self):
-    """Test ints <= 0 for height"""
-    with self.assertRaisesRegex(ValueError, "height must be > 0"):
-        r = Rectangle(1, -1)
+    def test_height_valueerror(self):
+        """Test ints <= 0 for height"""
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, -1)
 
-    with self.assertRaisesRegex(ValueError, "height must be > 0"):
-        r = Rectangle(1, 0)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, 0)
 
-def test_str(self):
-    """Test the str method"""
-    self.assertEqual(str(self.r1), "[Rectangle] (1) 0/0 - 10/10")
+    def test_str(self):
+        """Test the str method"""
+        self.assertEqual(str(self.r1), "[Rectangle] (1) 0/0 - 10/10")
 
-    self.assertEqual(str(self.r2), "[Rectangle] (2) 4/0 - 2/3")
+        self.assertEqual(str(self.r2), "[Rectangle] (2) 4/0 - 2/3")
 
-    self.assertEqual(str(self.r3), "[Rectangle] (9) 7/8 - 5/6")
+        self.assertEqual(str(self.r3), "[Rectangle] (9) 7/8 - 5/6")
 
-    self.assertEqual(str(self.r4), "[Rectangle] (3) 13/14 - 11/12")
+        self.assertEqual(str(self.r4), "[Rectangle] (3) 13/14 - 11/12")
