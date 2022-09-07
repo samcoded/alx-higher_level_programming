@@ -1,8 +1,9 @@
 #!/usr/bin/node
-module.exports = {
-  callMeMoby: function (n, f) {
-    for (let i = 0; i < n; i++) {
-      f();
-    }
+
+const callMeMoby = (x, theFunction) => {
+  for (; x > 0; x--) {
+    theFunction();
   }
 };
+
+module.exports = { callMeMoby };
